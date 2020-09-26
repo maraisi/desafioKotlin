@@ -5,5 +5,7 @@ package br.com.digitalhouse
 //código de professor (Integer). Implementar a classe criando os atributos necessários.
 //Um professor será igual a outro se seus códigos de professor forem iguais.
 
-class Professor(val nome: String, val sobrenome: String, var tempoDeCasa: Int, val codigoProfessor: Int) {
+//Parte D: As duas novas classes, professor titular e professor adjunto, herdam a classe professor.
+
+open class Professor(val nome: String, val sobrenome: String, var tempoDeCasa: Int, val codigoProfessor: Int) {
 }
