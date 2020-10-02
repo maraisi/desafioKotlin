@@ -1,5 +1,6 @@
 package br.com.digitalhouse
 
+import java.util.*
 import br.com.digitalhouse.Professor as Professor
 
 //Parte G: Criar um diagrama de classes que modele a classe DigitalHouseManager. A princípio, DigitalHouseManager
@@ -20,12 +21,12 @@ class DigitalHouseManager {
 
 //--------------REGISTRAR CURSO---------------------------
 
-    fun registrarCurso(nome: String, codigoCursoDH: Int, quantidadeMaximaDeAlunos: Int){
+    fun registrarCurso(nome: String, codigoCursoDH: Int, quantidadeMaximaDeAlunos: Int) {
         listaDeCursos.add(Curso(nome, codigoCursoDH, quantidadeMaximaDeAlunos))
 
         //Para ver se o curso foi adicionado na lista de cursos da Digital House
-        for(curso in listaDeCursos){
-            if(curso.codigoCurso.equals(codigoCursoDH)){
+        for (curso in listaDeCursos) {
+            if (curso.codigoCurso.equals(codigoCursoDH)) {
                 println("\nAdicionado à lista de cursos da Digital House   • Nome do curso: ${curso.nome}\n" +
                         "                                                • Código do curso: ${curso.codigoCurso}\n" +
                         "                                                • Quantidade Máxima: ${curso.qtdMaximaDeAlunos}\n")
@@ -36,9 +37,9 @@ class DigitalHouseManager {
     }
 //----------EXCLUIR CURSO------------------------
 
-    fun excluirCurso(codigoCursoDH: Int){
-        for(curso in listaDeCursos){
-            if(curso.codigoCurso.equals(codigoCursoDH)){
+    fun excluirCurso(codigoCursoDH: Int) {
+        for (curso in listaDeCursos) {
+            if (curso.codigoCurso.equals(codigoCursoDH)) {
                 println("O curso de ${curso.nome} foi removido da lista de cursos da Digital House.\n")
                 listaDeCursos.remove(curso)
                 return
@@ -59,8 +60,8 @@ class DigitalHouseManager {
         listaDeProfessores.add(ProfessorAdjunto(nome, sobrenome, tempoDeCasa, codigoProfessorDH, qtdHorasMonitoria))
 
         //Para ver se o professor adjunto foi adicionado na lista de professores da Digital House
-        for(prof:Professor in listaDeProfessores){
-            if(prof.codigoProfessor.equals(codigoProfessorDH)){
+        for (prof: Professor in listaDeProfessores) {
+            if (prof.codigoProfessor.equals(codigoProfessorDH)) {
                 println("\nAdicionado à lista de professores.......... Professor Adjunto: ${prof.nome} ${prof.sobrenome}\n" +
                         "                                            Código do professor: ${prof.codigoProfessor}\n"
                 )
@@ -83,8 +84,8 @@ class DigitalHouseManager {
         listaDeProfessores.add(ProfessorTitular(nome, sobrenome, tempoDeCasa, codigoProfessorDH, especialidade))
 
         //Para ver se o professor titular foi adicionado na lista de professores da Digital House
-        for(prof in listaDeProfessores){
-            if(prof.codigoProfessor.equals(codigoProfessorDH)){
+        for (prof in listaDeProfessores) {
+            if (prof.codigoProfessor.equals(codigoProfessorDH)) {
                 println("\nAdicionado à lista de professores.......... Professor Titular: ${prof.nome} ${prof.sobrenome}\n" +
                         "                                            Código do professor: ${prof.codigoProfessor}\n"
                 )
@@ -98,10 +99,10 @@ class DigitalHouseManager {
 //-------------EXCLUIR PROFESSOR--------------------
 
 
-    fun excluirProfessor(codigoProfessorDH: Int){
+    fun excluirProfessor(codigoProfessorDH: Int) {
 
-        for(professor in listaDeProfessores){
-            if(professor.codigoProfessor.equals(codigoProfessorDH)){
+        for (professor in listaDeProfessores) {
+            if (professor.codigoProfessor.equals(codigoProfessorDH)) {
                 println("O professor ${professor.nome} foi removido da lista de professores.\n")
                 listaDeProfessores.remove(professor)
                 return
@@ -129,16 +130,16 @@ class DigitalHouseManager {
 
 //------MATRICULAR ALUNO-----------------------------
 
-    fun matricularAluno(codigoAlunoDH: Int, codigoCursoDH: Int){
-        for(curso in listaDeCursos){
-            if (curso.codigoCurso.equals(codigoCursoDH)){
+    fun matricularAluno(codigoAlunoDH: Int, codigoCursoDH: Int) {
+        for (curso in listaDeCursos) {
+            if (curso.codigoCurso.equals(codigoCursoDH)) {
 
-                for (aluno in listaDeAlunos){
-                    if (aluno.codigoAluno.equals(codigoAlunoDH)){
+                for (aluno in listaDeAlunos) {
+                    if (aluno.codigoAluno.equals(codigoAlunoDH)) {
                         println("\nMATRICULA............ Aluno: ${aluno.nome} ${aluno.sobrenome}\n" +
                                 "                      Curso solicitado: ${curso.nome}")
-                        if(curso.adicionarUmAluno(aluno)){
-                            listaDeMatriculas.add(Matricula(aluno, curso))
+                        if (curso.adicionarUmAluno(aluno)) {
+                            listaDeMatriculas.add(Matricula(aluno, curso, dataDeMatricula = Date()))
                             return println("                      Existem vagas no curso e a matrícula foi realizada com sucesso.\n")
 
 
@@ -158,15 +159,15 @@ class DigitalHouseManager {
 
     fun alocarProfessores(codigoCursoDH: Int, codigoProfessorTitular: Int, codigoProfessorAdjunto: Int) {
 
-        for (curso in listaDeCursos){
-            if(curso.codigoCurso.equals(codigoCursoDH)){
-                for (professor in listaDeProfessores){
-                    if(professor.codigoProfessor.equals(codigoProfessorTitular)){
+        for (curso in listaDeCursos) {
+            if (curso.codigoCurso.equals(codigoCursoDH)) {
+                for (professor in listaDeProfessores) {
+                    if (professor.codigoProfessor.equals(codigoProfessorTitular)) {
                         curso.professorTitular = professor as ProfessorTitular
                         println("\nProfessor titular alocado ao curso de ${curso.nome}: ${curso.professorTitular.nome} ${curso.professorTitular.sobrenome}")
 
                     }
-                    if (professor.codigoProfessor.equals(codigoProfessorAdjunto)){
+                    if (professor.codigoProfessor.equals(codigoProfessorAdjunto)) {
                         curso.professorAdjunto = professor as ProfessorAdjunto
                         println("Professor adjunto alocado ao curso de ${curso.nome}: ${curso.professorAdjunto.nome} ${curso.professorAdjunto.sobrenome}\n")
 
@@ -176,6 +177,22 @@ class DigitalHouseManager {
             }
         }
     }
+
+
+//----consulta de matricula--------------
+
+//
+//    fun consultarMatricula(codigoAlunoDH: Int) {
+//        for (matricula in listaDeMatriculas) {
+//            if (matricula.aluno.codigoAluno.equals(codigoAlunoDH)) {
+//                return println("\nCONSULTA DE MATRICULA............ Aluno: ${matricula.aluno.nome} ${matricula.aluno.sobrenome}\n" +
+//                        "                                  Curso matriculado: ${matricula.curso.nome}\n" +
+//                        "                                  Data da matricula: ${matricula.dataDeMatricula}")
+//            }
+//        }
+//    }
+
+
 
 
 }

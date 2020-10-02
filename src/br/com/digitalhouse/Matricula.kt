@@ -8,6 +8,4 @@ um curso (Curso) e uma data de matrícula (Date). Implementar a classe criando o
 Criar um construtor de Matrícula que tome um aluno e um curso e construa uma matrícula com a data do dia.
 */
 
-class Matricula(var aluno: Aluno, var curso: Curso){
-    var dataDeMatricula = Date()
-}
+class Matricula(var aluno: Aluno, var curso: Curso, var dataDeMatricula: Date)
