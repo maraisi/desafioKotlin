@@ -26,10 +26,10 @@ class DigitalHouseManager {
         //Para ver se o curso foi adicionado na lista de cursos da Digital House
         for(curso in listaDeCursos){
             if(curso.codigoCurso.equals(codigoCursoDH)){
-                println("\nAdicionado à lista de cursos da Digital House      • Nome do curso: ${curso.nome}\n" +
-                        "                                                   • Código do curso: ${curso.codigoCurso}\n" +
-                        "                                                   • Quantidade Máxima: ${curso.qtdMaximaDeAlunos}\n")
-                break
+                println("\nAdicionado à lista de cursos da Digital House   • Nome do curso: ${curso.nome}\n" +
+                        "                                                • Código do curso: ${curso.codigoCurso}\n" +
+                        "                                                • Quantidade Máxima: ${curso.qtdMaximaDeAlunos}\n")
+                return
             }
         }
 
@@ -39,12 +39,13 @@ class DigitalHouseManager {
     fun excluirCurso(codigoCursoDH: Int){
         for(curso in listaDeCursos){
             if(curso.codigoCurso.equals(codigoCursoDH)){
-                println("\nO curso de ${curso.nome} foi removido da lista de cursos da Digital House.\n")
-                // listaDeCursos.remove(curso)
-                break
+                println("O curso de ${curso.nome} foi removido da lista de cursos da Digital House.\n")
+                listaDeCursos.remove(curso)
+                return
 
             }
         }
+        println("Esse curso não existe.\n")
     }
 
 //----------REGISTRAR PROFESSOR ADJUNTO--------------------------
@@ -60,11 +61,11 @@ class DigitalHouseManager {
         //Para ver se o professor adjunto foi adicionado na lista de professores da Digital House
         for(prof:Professor in listaDeProfessores){
             if(prof.codigoProfessor.equals(codigoProfessorDH)){
-                println("\nAdicionado à lista de professores da Digital House      • Professor Adjunto: ${prof.nome} ${prof.sobrenome}\n" +
-                        "                                                        • Código: ${prof.codigoProfessor}\n"
+                println("\nAdicionado à lista de professores.......... Professor Adjunto: ${prof.nome} ${prof.sobrenome}\n" +
+                        "                                            Código do professor: ${prof.codigoProfessor}\n"
                 )
 
-                break
+                return
             }
         }
 
@@ -84,10 +85,10 @@ class DigitalHouseManager {
         //Para ver se o professor titular foi adicionado na lista de professores da Digital House
         for(prof in listaDeProfessores){
             if(prof.codigoProfessor.equals(codigoProfessorDH)){
-                println("\nAdicionado à lista de professores da Digital House      • Professor Titular: ${prof.nome} ${prof.sobrenome}\n" +
-                        "                                                        • Código: ${prof.codigoProfessor}\n"
+                println("\nAdicionado à lista de professores.......... Professor Titular: ${prof.nome} ${prof.sobrenome}\n" +
+                        "                                            Código do professor: ${prof.codigoProfessor}\n"
                 )
-                break
+                return
             }
         }
 
@@ -98,13 +99,17 @@ class DigitalHouseManager {
 
 
     fun excluirProfessor(codigoProfessorDH: Int){
+
         for(professor in listaDeProfessores){
-            if(professor.codigoProfessor.equals(listaDeProfessores)){
+            if(professor.codigoProfessor.equals(codigoProfessorDH)){
                 println("O professor ${professor.nome} foi removido da lista de professores.\n")
                 listaDeProfessores.remove(professor)
+                return
             }
 
         }
+        return println("Esse professor não existe")
+
     }
 
 //--------REGISTRAR ALUNO-------------------
@@ -116,8 +121,8 @@ class DigitalHouseManager {
         //Para ver se o aluno foi adicionado na lista de alunos
         for (aluno in listaDeAlunos) {
             if (aluno.codigoAluno.equals(codigoAlunoDH)) {
-                println("${aluno.nome} ${aluno.sobrenome} foi registrado(a) como aluno(a) da Digital House.\n")
-                break
+                return println("${aluno.nome} ${aluno.sobrenome} foi registrado(a) como aluno(a) da Digital House.\n")
+
             }
         }
     }
@@ -130,14 +135,16 @@ class DigitalHouseManager {
 
                 for (aluno in listaDeAlunos){
                     if (aluno.codigoAluno.equals(codigoAlunoDH)){
-                        println("\nMATRICULA \nAluno: ${aluno.nome} ${aluno.sobrenome}\nCurso solicitado: ${curso.nome}")
+                        println("\nMATRICULA............ Aluno: ${aluno.nome} ${aluno.sobrenome}\n" +
+                                "                      Curso solicitado: ${curso.nome}")
                         if(curso.adicionarUmAluno(aluno)){
                             listaDeMatriculas.add(Matricula(aluno, curso))
-                            println("Existem vagas no curso e a matrícula foi realizada com sucesso.")
-                            break
+                            return println("                      Existem vagas no curso e a matrícula foi realizada com sucesso.\n")
 
-                        } else println("A matrícula não foi realizada pois não há vagas para o curso.")
-                        break
+
+                        }
+                        return println("                      A matrícula não foi realizada pois não há vagas para o curso.\n")
+
 
                     }
                 }

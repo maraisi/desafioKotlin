@@ -24,7 +24,10 @@ class Curso (val nome:String,
     var professorAdjunto: ProfessorAdjunto = ProfessorAdjunto("","",0,0,0)
 
     override fun equals(other: Any?): Boolean {
-        return this.codigoCurso == other
+        if (other == null || other !is Curso) {
+            return false
+        }
+        return this.codigoCurso == other.codigoCurso
     }
 
     fun adicionarUmAluno(umAluno: Aluno): Boolean {

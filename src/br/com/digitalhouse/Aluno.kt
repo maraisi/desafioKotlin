@@ -8,7 +8,11 @@ package br.com.digitalhouse
 class Aluno(val nome: String, val sobrenome: String, var codigoAluno: Int){
 
     override fun equals(other: Any?): Boolean {
-        return this.codigoAluno == other
+        if (other == null || other !is Aluno) {
+            return false
+        }
+        return this.codigoAluno == other.codigoAluno
     }
+
 
 }
