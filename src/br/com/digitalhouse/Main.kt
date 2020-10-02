@@ -48,5 +48,12 @@ fun main() {
     println("Mudou o tamanho da lista de professores? ${digitalhouse.listaDeProfessores.size}\n")
     for(n in digitalhouse.listaDeProfessores) println(n.nome)
 
+    println("Tamanho da lista de cursos: ${digitalhouse.listaDeCursos.size}")
+    digitalhouse.excluirCurso(20030)
+    digitalhouse.excluirCurso(20002)
+    digitalhouse.excluirCurso(20001)
 
+    println("Tamanho da lista de cursos: ${digitalhouse.listaDeCursos.size}")
+
+    for (n in digitalhouse.listaDeCursos) println("${n.qtdMaximaDeAlunos} ${n.codigoCurso} ${n.nome} ${n.professorAdjunto.nome}")
 }

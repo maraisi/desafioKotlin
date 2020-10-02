@@ -39,7 +39,7 @@ class DigitalHouseManager {
     fun excluirCurso(codigoCursoDH: Int){
         for(curso in listaDeCursos){
             if(curso.codigoCurso.equals(codigoCursoDH)){
-                println("\nO curso de ${curso.nome} foi removido da lista de cursos da Digital House.\n")
+                println("O curso de ${curso.nome} foi removido da lista de cursos da Digital House.\n")
                 listaDeCursos.remove(curso)
                 return
 
@@ -88,7 +88,7 @@ class DigitalHouseManager {
                 println("\nAdicionado à lista de professores.......... Professor Titular: ${prof.nome} ${prof.sobrenome}\n" +
                         "                                            Código do professor: ${prof.codigoProfessor}\n"
                 )
-                break
+                return
             }
         }
 
