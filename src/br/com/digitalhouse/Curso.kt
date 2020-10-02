@@ -15,7 +15,7 @@ package br.com.digitalhouse
 //● fun excluirAluno(umAluno: Aluno)
 
 
-class Curso (val nome:String,
+data class Curso (val nome:String,
              val codigoCurso: Int,
              var qtdMaximaDeAlunos: Int){
 
@@ -23,9 +23,9 @@ class Curso (val nome:String,
     var professorTitular: ProfessorTitular = ProfessorTitular("","",0,0,"")
     var professorAdjunto: ProfessorAdjunto = ProfessorAdjunto("","",0,0,0)
 
-    override fun equals(other: Any?): Boolean {
-        return this.codigoCurso == other
-    }
+//    override fun equals(other: Any?): Boolean {
+//        return this.codigoCurso == other
+//    }
 
     fun adicionarUmAluno(umAluno: Aluno): Boolean {
 
