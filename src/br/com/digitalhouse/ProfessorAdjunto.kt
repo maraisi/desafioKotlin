@@ -4,6 +4,5 @@ package br.com.digitalhouse
 //professores titulares e os professores adjuntos. Um professor titular tem uma especialidade (String)
 //e um professor adjunto tem uma quantidade de horas de monitoria (Integer).
 
-class ProfessorAdjunto (var qtdHorasMonitoria: Int) : Professor(nome, sobrenome, tempoDeCasa, codigoProfessor){
-
-}
+class ProfessorAdjunto (nome: String, sobrenome: String, tempoDeCasa: Int, codigoProfessor: Int,
+                        var qtdHorasMonitoria: Int) : Professor(nome, sobrenome, tempoDeCasa, codigoProfessor)
