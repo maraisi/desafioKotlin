@@ -43,19 +43,10 @@ fun main() {
     digitalhouse.matricularAluno(942, 20002)
 
 //-----------teste------------------------------
-
-    digitalhouse.excluirCurso(20030)
-    digitalhouse.excluirCurso(20002)
-    digitalhouse.excluirCurso(20001)
-
-
+    println("Tamanho da lista de professores: ${digitalhouse.listaDeProfessores.size}")
     digitalhouse.excluirProfessor(20201472)
-    println(digitalhouse.listaDeProfessores.size)
+    println("Mudou o tamanho da lista de professores? ${digitalhouse.listaDeProfessores.size}\n")
     for(n in digitalhouse.listaDeProfessores) println(n.nome)
 
-
-    println(digitalhouse.listaDeCursos.size)
-
-    for (n in digitalhouse.listaDeCursos) println("${n.qtdMaximaDeAlunos} ${n.codigoCurso} ${n.nome} ${n.professorAdjunto.nome}")
 
 }

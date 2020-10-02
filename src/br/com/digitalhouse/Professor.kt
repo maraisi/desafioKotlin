@@ -11,7 +11,10 @@ package br.com.digitalhouse
 open class Professor(var nome: String, var sobrenome: String, var tempoDeCasa: Int, var codigoProfessor: Int){
 
     override fun equals(other: Any?): Boolean {
-        return this.codigoProfessor == other
+        if (other == null || other !is Professor) {
+            return false
+        }
+        return this.codigoProfessor == other.codigoProfessor
     }
 
 }
